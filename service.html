@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>고객센터 - 견과사전</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3efe5;
+      color: #5e3c1c;
+    }
+
+    header {
+      background-color: #e8dfc9;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8rem;
+      color: #5e3c1c;
+      text-decoration: none;
+    }
+
+    .search-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 2rem;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.5rem 0.5rem 0.5rem 1rem;
+      border-radius: 25px;
+      border: 2px solid #5e3c1c;
+      font-size: 1rem;
+      outline: none;
+      background-color: white;
+    }
+
+    .search-box .material-symbols-outlined {
+      position: absolute;
+      right: 0.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #5e3c1c;
+      pointer-events: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #5e3c1c;
+      font-weight: bold;
+    }
+
+    .main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .main h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #4a2f14;
+    }
+
+    .faq, .inquiry, .complaint {
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      margin-bottom: 2rem;
+    }
+
+    .faq h2, .inquiry h2, .complaint h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #c2a378;
+      padding-left: 0.5rem;
+    }
+
+    .faq ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+    }
+
+    .contact-info {
+      font-size: 0.95rem;
+      color: #7a5c3e;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="index.html" class="logo">Nut-Pedia</a>
+
+    <div class="search-container">
+      <div class="search-box">
+        <input type="text" placeholder="검색어를 입력하세요" />
+        <span class="material-symbols-outlined">search</span>
+      </div>
+    </div>
+
+    <nav>
+      <a href="index.html">홈</a>
+      <a href="service.html">고객센터</a>
+      <a href="login.html">로그인</a>
+    </nav>
+  </header>
+
+  <div class="main">
+    <h1>고객센터</h1>
+
+    <div class="faq">
+      <h2>자주 묻는 질문</h2>
+      <ul>
+        <li>질문1</li>
+        <li>질문2</li>
+        <li>질문3</li>
+      </ul>
+    </div>
+
+    <div class="inquiry">
+      <h2>1:1 문의</h2>
+      <p>문의1</p>
+      <p class="contact-info">📧 메일일</p>
+    </div>
+
+    <div class="complaint">
+      <h2>불편사항 접수</h2>
+      <p>컴플레인1</p>
+      <p class="contact-info">📞 전화번호</p>
+    </div>
+  </div>
+</body>
+</html>
