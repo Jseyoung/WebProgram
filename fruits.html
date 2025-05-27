@@ -1,5 +1,273 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>건과일 목록 - 견과사전</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      background-color: #f3efe5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #5e3c1c;
+    }
+
+    header {
+      background-color: #e8dfc9;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8rem;
+      text-decoration: none;
+      color: #5e3c1c;
+    }
+
+    .search-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 2rem;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.5rem 0.5rem 0.5rem 1rem;
+      border-radius: 25px;
+      border: 2px solid #5e3c1c;
+      font-size: 1rem;
+      outline: none;
+      background-color: white;
+    }
+
+    .search-box .material-symbols-outlined {
+      position: absolute;
+      right: 0.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #5e3c1c;
+      pointer-events: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #5e3c1c;
+    }
+
+    .main {
+      display: flex;
+      padding: 2rem;
+    }
+
+    .sidebar {
+      width: 220px;
+      margin-right: 2rem;
+    }
+
+    .sidebar .filter-title,
+    .sidebar .search-label {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .sidebar input[type="checkbox"] {
+      margin-right: 0.5rem;
+    }
+
+    .sidebar label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .filter-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-section {
+      display: none;
+      margin-top: 0.5rem;
+    }
+
+    .toggle-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .toggle-header span {
+      font-weight: bold;
+    }
+
+    .toggle-icon {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .container {
+      flex: 1;
+    }
+
+    .section-title {
+      font-family: 'Lobster', cursive;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background-color: #fff7eb;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .product-name {
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
+
+    .price {
+      color: #a65d00;
+      margin-bottom: 0.5rem;
+    }
+
+    .add-to-cart {
+      background-color: #7b4f1c;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .add-to-cart:hover {
+      background-color: #5e3c1c;
+    }
+  </style>
+  <script>
+    function toggleMoreFilters(id, iconId) {
+      const section = document.getElementById(id);
+      const icon = document.getElementById(iconId);
+      const isShown = section.style.display === 'block';
+      section.style.display = isShown ? 'none' : 'block';
+      icon.textContent = isShown ? '+' : '-';
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">Nut-Pedia</a>
+    <div class="search-container">
+      <div class="search-box">
+        <input type="text" placeholder="검색어를 입력하세요" />
+        <span class="material-symbols-outlined">search</span>
+      </div>
+    </div>
+    <nav>
+      <a href="cart.html">장바구니</a>
+      <a href="service.html">고객센터</a>
+      <a href="login.html">로그인</a>
+    </nav>
+  </header>
+
+  <div class="main">
+    <aside class="sidebar">
+      <div class="search-label">건과일</div> 검색</div>
+      <input type="text" placeholder="건과일일 내에서 검색" style="width:100%; padding: 0.4rem; border-radius: 20px; border: 1px solid #ccc; margin-bottom: 1rem;" />
+
+      <div class="filter-title">필터</div>
+
+      <div class="filter-group">
+        <div class="toggle-header" onclick="toggleMoreFilters('section-a', 'icon-a')">
+          <span>A</span>
+          <span id="icon-a" class="toggle-icon">+</span>
+        </div>
+        <div id="section-a" class="filter-section">
+          <label><input type="checkbox" /> 필터1</label>
+          <label><input type="checkbox" /> 필터2</label>
+          <label><input type="checkbox" /> 필터3</label>
+          <label><input type="checkbox" /> 필터4</label>
+          <label><input type="checkbox" /> 필터5</label>
+          <label><input type="checkbox" /> 필터6</label>
+          <label><input type="checkbox" /> 필터7</label>
+          <label><input type="checkbox" /> 필터8</label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="toggle-header" onclick="toggleMoreFilters('section-b', 'icon-b')">
+          <span>B</span>
+          <span id="icon-b" class="toggle-icon">+</span>
+        </div>
+        <div id="section-b" class="filter-section">
+          <label><input type="checkbox" /> 필터9</label>
+          <label><input type="checkbox" /> 필터10</label>
+          <label><input type="checkbox" /> 필터11</label>
+          <label><input type="checkbox" /> 필터12</label>
+          <label><input type="checkbox" /> 필터13</label>
+          <label><input type="checkbox" /> 필터14</label>
+          <label><input type="checkbox" /> 필터15</label>
+          <label><input type="checkbox" /> 필터16</label>
+        </div>
+      </div>
+
+    </aside>
+
+    <div class="container">
+      <div class="section-title"><strong>Snacks</strong></div>
+      <div class="products-grid">
+        <div class="product-card">
+          <img src="jpg" alt="제품1" />
+          <div class="product-name">제품1</div>
+          <div class="price">0000원 / 00g</div>
+          <button class="add-to-cart">장바구니 담기</button>
+        </div>
+        <div class="product-card">
+          <img src="jpg" alt="제품2" />
+          <div class="product-name">제품2</div>
+          <div class="price">0000원 / 00g</div>
+          <button class="add-to-cart">장바구니 담기</button>
+        </div>
+        <div class="product-card">
+          <img src="jpg" alt="제품3" />
+          <div class="product-name">제품3</div>
+          <div class="price">0000원 / 00g</div>
+          <button class="add-to-cart">장바구니 담기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
