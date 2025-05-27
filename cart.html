@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>장바구니 - 견과사전</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #f3efe5;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #5e3c1c;
+    }
+
+    header {
+      background-color: #e8dfc9;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 1.8rem;
+      color: #5e3c1c;
+      text-decoration: none;
+    }
+
+    header nav {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    header nav a {
+      text-decoration: none;
+      color: #5e3c1c;
+      font-weight: 500;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .cart-item {
+      background-color: #fffaf0;
+      border: 1px solid #ddd0b1;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-item-name {
+      font-weight: bold;
+    }
+
+    .cart-summary {
+      text-align: right;
+      margin-top: 2rem;
+      font-size: 1.1rem;
+    }
+
+    .checkout-button {
+      margin-top: 1rem;
+      display: block;
+      margin-left: auto;
+      background-color: #5e3c1c;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .checkout-button:hover {
+      background-color: #7a5330;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">Nut-Pedia</a>
+    <nav>
+      <a href="service.html">고객센터</a>
+      <a href="login.html">로그인</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Your Cart</h1>
+
+    <div class="cart-item">
+      <div class="cart-item-name">호두 + 캐슈넛 믹스</div>
+      <div class="cart-item-price">₩9,800</div>
+    </div>
+
+    <div class="cart-item">
+      <div class="cart-item-name">무염 아몬드 100g</div>
+      <div class="cart-item-price">₩4,500</div>
+    </div>
+
+    <div class="cart-summary">
+      총 합계: <strong>₩14,300</strong>
+      <button class="checkout-button">결제하기</button>
+    </div>
+  </div>
+
+</body>
+</html>
