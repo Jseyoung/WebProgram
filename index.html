@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>견과사전 - 홈</title>
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Lobster&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
 
   <style>
     body {
@@ -25,10 +25,9 @@
       flex-wrap: wrap;
     }
 
-    header .logo {
-      font-family: 'Pacifico', cursive;        
+    .logo {
+      font-family: 'Pacifico', cursive;
       font-size: 1.8rem;
-      font-weight: normal;
       color: #5e3c1c;
       text-decoration: none;
     }
@@ -65,14 +64,14 @@
       pointer-events: none;
     }
 
-    header nav {
+    nav {
       display: flex;
       gap: 1.5rem;
     }
 
-    header nav a {
-      color: #5e3c1c;
+    nav a {
       text-decoration: none;
+      color: #5e3c1c;
       font-weight: bold;
     }
 
@@ -118,7 +117,7 @@
       box-sizing: border-box;
       transition: background-color 0.6s ease;
     }
-    
+
     .category-content:hover {
       background-color: #7b5635;
       cursor: pointer;
@@ -179,77 +178,6 @@
       padding: 1rem;
       line-height: 1.6;
     }
-  </style>
-</head>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>견과사전 - 홈</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
-
-
-  <style>
-    body {
-      margin: 0;
-      background-color: #f3efe5;
-      color: #5e3c1c;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    header {
-      background-color: #e8dfc9;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      font-family: 'Pacifico', cursive;
-      font-size: 1.8rem;
-      color: #5e3c1c;
-      text-decoration: none;
-    }
-
-    nav {
-      display: flex;
-      gap: 1.5rem;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: #5e3c1c;
-      font-weight: bold;
-    }
-
-    .banner {
-      background-color: #d4c4ab;
-      padding: 3rem 1rem;
-      text-align: center;
-    }
-
-    .banner-text {
-      font-family: 'Lobster', cursive;
-      font-size: 2rem;
-    }
-
-    .more-button {
-      display: block;
-      margin: 0 auto 4rem;
-      padding: 0.5rem 1.5rem;
-      border: 2px solid #5e3c1c;
-      background: none;
-      color: #5e3c1c;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
 
     footer {
       background-color: #e8dfc9;
@@ -257,14 +185,130 @@
       text-align: center;
       font-size: 0.9rem;
     }
+
+    .chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #5e3c1c;
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .chat-box {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 320px;
+      height: 420px;
+      background-color: white;
+      border: 2px solid #5e3c1c;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    #chat-toggle:checked:not(:checked ~ #chat-close) ~ .chat-box {
+      display: flex;
+    }
+
+    .chat-header {
+      background-color: #2e5c43;
+      color: white;
+      padding: 0.75rem 1rem;
+      font-weight: bold;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      position: relative;
+    }
+
+    .chat-close-button {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .chat-content {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .bubble {
+      max-width: 80%;
+      margin-bottom: 10px;
+      padding: 0.5rem 0.8rem;
+      border-radius: 15px;
+      position: relative;
+      font-size: 0.9rem;
+      word-wrap: break-word;
+    }
+
+    .bubble.bot {
+      background-color: #e0e0e0;
+      align-self: flex-start;
+      border-bottom-left-radius: 0;
+    }
+
+    .bubble.user {
+      background-color: #d8cfc0;
+      align-self: flex-end;
+      border-bottom-right-radius: 0;
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+      padding: 0.5rem;
+      background-color: #fff;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 0.4rem;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    .chat-input button {
+      margin-left: 0.5rem;
+      background-color: #5e3c1c;
+      border: none;
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 
 <body>
 
-<header>
+  <header>
     <a href="index.html" class="logo">Nut-Pedia</a>
-
     <div class="search-container">
       <div class="search-box">
         <input type="text" placeholder="검색어를 입력하세요" />
@@ -273,82 +317,94 @@
     </div>
     <nav>
       <a href="cart.html">장바구니</a>
-      <a href="service.html">고객센터</a>
       <a href="login.html">로그인</a>
     </nav>
   </header>
 
   <main>
-<body>
+    <div class="main-banner">
+      <div class="banner-text">A little <strong>"nut"</strong>ty, a lot amazing</div>
+    </div>
 
-  <div class="main-banner">
-    <div class="banner-text">A little <strong>"nut"</strong>ty, a lot amazing</div>
-  </div>
-  
+    <div class="category-grid">
+      <a href="snacks.html" class="category-box">
+        <div class="category-content">
+          <h3>Snacks</h3>
+          <img src="https://i.pinimg.com/736x/c7/c5/cf/c7c5cfd36ce9914524b81580da067ba2.jpg" alt="snacks">
+        </div>
+      </a>
+      <a href="fruit.html" class="category-box">
+        <div class="category-content">
+          <h3>Dried Fruit</h3>
+          <img src="https://i.pinimg.com/736x/5f/55/bd/5f55bdfb790befe50ea163ff766f8e08.jpg" alt="dried-fruit">
+        </div>
+      </a>
+      <a href="gift.html" class="category-box">
+        <div class="category-content">
+          <h3>Gifts</h3>
+          <img src="https://i.pinimg.com/736x/83/7d/de/837dde5de428d90181b92ee53dabb0dc.jpg" alt="gifts">
+        </div>
+      </a>
+      <a href="nuts.html" class="category-box">
+        <div class="category-content">
+          <h3>Nuts</h3>
+          <img src="https://i.pinimg.com/736x/2c/a1/87/2ca187092e723809e66f70f20a24f5e5.jpg" alt="nuts">
+        </div>
+      </a>
+      <a href="custom.html" class="category-box">
+        <div class="category-content">
+          <h3>Custom</h3>
+          <img src="https://i.pinimg.com/736x/a0/07/c4/a007c460e140da995f822a9293c44a04.jpg" alt="custom">
+        </div>
+      </a>
+      <a href="best.html" class="category-box">
+        <div class="category-content">
+          <h3>Best Sellers</h3>
+          <img src="https://i.pinimg.com/736x/0d/13/69/0d136942b7d4515232b4d43e05ba7a70.jpg" alt="bestsellers">
+        </div>
+      </a>
+    </div>
 
-  <div class="category-grid">
-    <a href="snacks.html" class="category-box">
-      <div class="category-content">
-        <h3>Snacks</h3>
-        <img src="https://i.pinimg.com/736x/c7/c5/cf/c7c5cfd36ce9914524b81580da067ba2.jpg" alt="snacks">
-      </div>
-    </a>
+    <button class="explore-button">더 보기</button>
 
-    <a href="fruit.html" class="category-box">
-      <div class="category-content">
-        <h3>Dried Fruit</h3>
-        <img src="https://i.pinimg.com/736x/5f/55/bd/5f55bdfb790befe50ea163ff766f8e08.jpg" alt="dried-fruit">
-      </div>
-    </a>
+    <div class="section">
+      <h2>서비스 소개</h2>
+      <p><strong>서비스 소개</strong></p>
+    </div>
 
-    <a href="gift.html" class="category-box">
-      <div class="category-content">
-        <h3>Gifts</h3>
-        <img src="https://i.pinimg.com/736x/83/7d/de/837dde5de428d90181b92ee53dabb0dc.jpg" alt="gifts">
-      </div>
-    </a>
-
-    <a href="nuts.html" class="category-box">
-      <div class="category-content">
-        <h3>Nuts</h3>
-        <img src="https://i.pinimg.com/736x/2c/a1/87/2ca187092e723809e66f70f20a24f5e5.jpg" alt="nuts">
-      </div>
-    </a>
-
-    <a href="custom.html" class="category-box">
-      <div class="category-content">
-        <h3>Custom</h3>
-        <img src="https://i.pinimg.com/736x/a0/07/c4/a007c460e140da995f822a9293c44a04.jpg" alt="custom">
-      </div>
-    </a>
-
-    <a href="best.html" class="category-box">
-      <div class="category-content">
-        <h3>Best Sellers</h3>
-        <img src="https://i.pinimg.com/736x/0d/13/69/0d136942b7d4515232b4d43e05ba7a70.jpg" alt="bestsellers">
-      </div>
-    </a>
-  </div>
-
-  <button class="explore-button">더 보기</button>
-
-  <div class="section">
-    <h2>서비스 소개</h2>
-    <p><strong>서비스 소개</strong></p>
-  </div>
-
-  <div class="section">
-    <h2>이용 방법</h2>
-    <p><strong>이용방법 설명</strong></p>
-  </div>
-</body>
+    <div class="section">
+      <h2>이용 방법</h2>
+      <p><strong>이용방법 설명</strong></p>
+    </div>
   </main>
+
+  <!-- 채팅 토글용 체크박스 -->
+  <input type="checkbox" id="chat-toggle" hidden>
+  <input type="checkbox" id="chat-close" hidden>
+
+  <!-- 채팅 열기 버튼 -->
+  <label for="chat-toggle" class="chat-button">
+    <span class="material-symbols-outlined">chat</span>
+  </label>
+
+  <!-- 채팅 박스 -->
+  <div class="chat-box">
+    <div class="chat-header">
+      고객센터
+      <label for="chat-close" class="chat-close-button">×</label>
+    </div>
+    <div class="chat-content">
+      <div class="bubble bot"><strong>Bot:</strong> 안녕하세요! 무엇을 도와드릴까요?</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="메시지를 입력하세요" />
+      <button>전송</button>
+    </div>
+  </div>
 
   <footer>
     &copy; 2025 견과사전. All rights reserved.
   </footer>
 
 </body>
-</html>
-
 </html>
