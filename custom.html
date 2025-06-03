@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>견과사전 - Custom</title>
+  <title>견과사전 - custom</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f3efe5;
       color: #333;
     }
-
     header {
       background-color: #e8dfc9;
       padding: 1rem 2rem;
@@ -21,42 +22,86 @@
       justify-content: space-between;
       align-items: center;
     }
-
     .logo {
       font-family: 'Pacifico', cursive;
       font-size: 2rem;
       color: #5e3c1c;
       text-decoration: none;
     }
+    .search-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      margin: 0 2rem;
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.5rem 0.5rem 0.5rem 1rem;
+      border-radius: 25px;
+      border: 2px solid #5e3c1c;
+      font-size: 1rem;
+      outline: none;
+      background-color: white;
+    }
+
+    .search-box .material-symbols-outlined {
+      position: absolute;
+      right: 0.6rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #5e3c1c;
+      pointer-events: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
 
     .section {
       display: flex;
       height: 300px;
     }
-
     .left {
       width: 40%;
-      background-color: #e0c3a3;
       padding: 2rem;
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
-      color: white;
+      color: #333;
     }
-
+    .section:nth-of-type(1) .left {
+      background-color: #e0f3ff;
+    }
+    .section:nth-of-type(2) .left {
+      background-color: #ffe4c2;
+    }
+    .section:nth-of-type(3) .left {
+      background-color: #d2f0d2;
+    }
     .left h3 {
       font-size: 1.8rem;
     }
-
     .right {
       width: 60%;
-      background-color: white;
       padding: 2rem;
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
     }
-
+    .section:nth-of-type(odd) .right {
+      background-color: #ffffff;
+    }
+    .section:nth-of-type(even) .right {
+      background-color: #f9f6f2;
+    }
     .right p {
       font-size: 1rem;
       max-width: 60%;
@@ -66,18 +111,9 @@
       transform: translateY(30px);
       animation: fadeInUp 0.8s forwards;
     }
-
-    .section:nth-of-type(1) .right p {
-      animation-delay: 0.2s;
-    }
-
-    .section:nth-of-type(2) .right p {
-      animation-delay: 0.4s;
-    }
-
-    .section:nth-of-type(3) .right p {
-      animation-delay: 0.6s;
-    }
+    .section:nth-of-type(1) .right p { animation-delay: 0.2s; }
+    .section:nth-of-type(2) .right p { animation-delay: 0.4s; }
+    .section:nth-of-type(3) .right p { animation-delay: 0.6s; }
 
     @keyframes fadeInUp {
       to {
@@ -85,56 +121,200 @@
         transform: translateY(0);
       }
     }
-
     @media (max-width: 768px) {
       .section {
         flex-direction: column;
         height: auto;
       }
-
       .right p {
         text-align: left;
       }
-
       .right, .left {
         width: 100%;
         padding: 1.5rem;
       }
     }
+
+       .chat-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #5e3c1c;
+      color: white;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      cursor: pointer;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .chat-box {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 320px;
+      height: 420px;
+      background-color: white;
+      border: 2px solid #5e3c1c;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    #chat-toggle:checked:not(:checked ~ #chat-close) ~ .chat-box {
+      display: flex;
+    }
+
+    .chat-header {
+      background-color: #2e5c43;
+      color: white;
+      padding: 0.75rem 1rem;
+      font-weight: bold;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      position: relative;
+    }
+
+    .chat-close-button {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 1.5rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .chat-content {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      font-size: 0.9rem;
+      background-color: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .bubble {
+      max-width: 80%;
+      margin-bottom: 10px;
+      padding: 0.5rem 0.8rem;
+      border-radius: 15px;
+      position: relative;
+      font-size: 0.9rem;
+      word-wrap: break-word;
+    }
+
+    .bubble.bot {
+      background-color: #e0e0e0;
+      align-self: flex-start;
+      border-bottom-left-radius: 0;
+    }
+
+    .bubble.user {
+      background-color: #d8cfc0;
+      align-self: flex-end;
+      border-bottom-right-radius: 0;
+    }
+
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+      padding: 0.5rem;
+      background-color: #fff;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 0.4rem;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 0.9rem;
+    }
+
+    .chat-input button {
+      margin-left: 0.5rem;
+      background-color: #5e3c1c;
+      border: none;
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
-
   <header>
-    <a href="#" class="logo">Nut-Pedia</a>
+    <a href="index.html" class="logo">Nut-Pedia</a>
+     <div class="search-container">
+      <div class="search-box">
+        <input type="text" placeholder="검색어를 입력하세요" />
+        <span class="material-symbols-outlined">search</span>
+      </div>
+    </div>
+    <nav>
+      <a href="cart.html">장바구니</a>
+      <a href="login.html">로그인</a>
+    </nav>
   </header>
-
   <section class="section">
     <div class="left">
-      <h3>패키징 1</h3>
+      <h3>패키지 1</h3>
     </div>
     <div class="right">
       <p>설명 1</p>
     </div>
   </section>
-
   <section class="section">
     <div class="left">
-      <h3>패키징 2</h3>
+      <h3>패키지 2</h3>
     </div>
     <div class="right">
       <p>설명 2</p>
     </div>
   </section>
-
   <section class="section">
     <div class="left">
-      <h3>패키징 3</h3>
+      <h3>패키지 3</h3>
     </div>
     <div class="right">
       <p>설명 3</p>
     </div>
   </section>
+
+    <!-- 채팅 토글용 체크박스 -->
+  <input type="checkbox" id="chat-toggle" hidden>
+  <input type="checkbox" id="chat-close" hidden>
+
+  <!-- 채팅 열기 버튼 -->
+  <label for="chat-toggle" class="chat-button">
+    <span class="material-symbols-outlined">chat</span>
+  </label>
+
+  <!-- 채팅 박스 -->
+  <div class="chat-box">
+    <div class="chat-header">
+      고객센터
+      <label for="chat-close" class="chat-close-button">×</label>
+    </div>
+    <div class="chat-content">
+      <div class="bubble bot"><strong>Bot:</strong> 안녕하세요! 무엇을 도와드릴까요?</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="메시지를 입력하세요" />
+      <button>전송</button>
+    </div>
+  </div>
 
 </body>
 </html>
