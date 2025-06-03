@@ -1,5 +1,140 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>견과사전 - Custom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f3efe5;
+      color: #333;
+    }
+
+    header {
+      background-color: #e8dfc9;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      color: #5e3c1c;
+      text-decoration: none;
+    }
+
+    .section {
+      display: flex;
+      height: 300px;
+    }
+
+    .left {
+      width: 40%;
+      background-color: #e0c3a3;
+      padding: 2rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      color: white;
+    }
+
+    .left h3 {
+      font-size: 1.8rem;
+    }
+
+    .right {
+      width: 60%;
+      background-color: white;
+      padding: 2rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
+
+    .right p {
+      font-size: 1rem;
+      max-width: 60%;
+      text-align: right;
+      color: #5e3c1c;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    .section:nth-of-type(1) .right p {
+      animation-delay: 0.2s;
+    }
+
+    .section:nth-of-type(2) .right p {
+      animation-delay: 0.4s;
+    }
+
+    .section:nth-of-type(3) .right p {
+      animation-delay: 0.6s;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .section {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .right p {
+        text-align: left;
+      }
+
+      .right, .left {
+        width: 100%;
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="logo">Nut-Pedia</a>
+  </header>
+
+  <section class="section">
+    <div class="left">
+      <h3>패키징 1</h3>
+    </div>
+    <div class="right">
+      <p>설명 1</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="left">
+      <h3>패키징 2</h3>
+    </div>
+    <div class="right">
+      <p>설명 2</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="left">
+      <h3>패키징 3</h3>
+    </div>
+    <div class="right">
+      <p>설명 3</p>
+    </div>
+  </section>
+
+</body>
+</html>
